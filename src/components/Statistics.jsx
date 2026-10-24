@@ -16,7 +16,7 @@ export default function Statistics() {
             style={{ fontSize: 'clamp(2.25rem, 5.5vw, 4.75rem)' }}
           >
             <span data-anim="count" data-value={s.value}>{s.value}</span>
-            <span className="text-[#0fb85a]">%</span>
+            <span className="text-[#2563eb]">%</span>
           </div>
           <p className="mt-2 max-w-[18ch] text-sm font-medium leading-snug text-neutral-600 md:text-base">{s.label}</p>
         </div>

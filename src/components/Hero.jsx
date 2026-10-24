@@ -16,7 +16,7 @@ export default function Hero() {
 
   return (
     <section ref={heroRef} className="hero relative grid w-full overflow-hidden" style={{ gridTemplateRows: '1fr auto 1fr' }}>
-      <div data-anim="bg" className="absolute inset-0 bg-[#e8e8e5]" />
+      <div data-anim="bg" className="absolute inset-0 bg-[#eef2f6]" />
 
       <header data-anim="brand" className="relative z-10 self-start px-[6vw] pt-6 font-sans text-xs font-semibold uppercase tracking-[0.35em] text-neutral-500">
         Itzfizz Digital

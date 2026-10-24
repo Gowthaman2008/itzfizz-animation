@@ -1,4 +1,4 @@
-/** Static road + the scroll-scaled green trail. The trail's geometry is set by the animation hook. */
+/** Static road + the scroll-scaled blue trail. The trail's geometry is set by the animation hook. */
 export default function Road() {
   return (
     <div data-anim="road" className="road-surface absolute inset-0 z-10 overflow-hidden">

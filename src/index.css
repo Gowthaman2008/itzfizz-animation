@@ -12,7 +12,7 @@
 html,
 body {
   margin: 0;
-  background: #f4f4f2;
+  background: #f1f5f9;
   color: #0b0b0b;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -32,6 +32,6 @@ body {
   background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.28) 0 36px, transparent 36px 72px);
 }
 .trail-fill {
-  background: linear-gradient(90deg, #0fb85a 0%, #27e873 100%);
+  background: linear-gradient(90deg, #1d4ed8 0%, #2563eb 45%, #38bdf8 100%);
   will-change: transform;
 }
