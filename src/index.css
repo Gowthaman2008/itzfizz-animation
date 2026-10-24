@@ -4,9 +4,9 @@
 
 :root {
   /* Everything in the lane is sized from the car so it scales as one unit. */
-  --car-w: clamp(150px, 26vw, 380px);
-  --car-h: calc(var(--car-w) * 0.4); /* car.svg is 400 x 160 */
-  --road-h: calc(var(--car-w) * 0.5);
+  --car-w: clamp(160px, 26vw, 380px);
+  --car-h: calc(var(--car-w) * 0.485); /* BMW top-view aspect ratio 1193 x 579 */
+  --road-h: calc(var(--car-w) * 0.62);
 }
 
 html,
