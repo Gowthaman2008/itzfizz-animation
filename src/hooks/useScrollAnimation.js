@@ -56,9 +56,11 @@ export default function useScrollAnimation(heroRef) {
         const progressAt = (x) => (x - carCenter0) / travel
 
         gsap.set(car, { x: startX })
-        // The trail spans [car centre at start -> car centre at end]; scaleX 0 -> 1 keeps its
-        // right edge glued to the car's centre because both move linearly over the same progress.
-        gsap.set(trail, { x: carCenter0, width: travel, scaleX: 0, transformOrigin: '0% 50%' })
+        // The trail spans from the road's left edge (x: 0) to under the car body.
+        // Full width extends to where the parked car stops at progress 1.
+        const trailHeadOffset = carW * 0.35
+        const trailWidth = startX + travel + trailHeadOffset
+        gsap.set(trail, { x: 0, width: trailWidth, scaleX: 0, transformOrigin: '0% 50%' })
 
         if (reduced) {
           // Respect reduced motion: show the final state, no pin, no scrub.
@@ -94,15 +96,14 @@ export default function useScrollAnimation(heroRef) {
         tl.fromTo(trail, { scaleX: 0 }, { scaleX: 1, duration: 1 }, 0)
         tl.fromTo(q('hint-text'), { opacity: 1 }, { opacity: 0, duration: 0.06 }, 0)
 
-        // Letters: the headline sits inside the stretch the car drives over (see Headline.jsx), so
-        // every letter is uncovered by the car's tail before the car parks. A letter starts to
-        // fade/rise the moment the tail reaches its left edge, tied to the car's real position.
+        // Letters: the headline sits inside the stretch the car drives over (see Headline.jsx).
+        // Each letter fades/rises the moment the car's tail reaches its left edge.
         const tailOffset = carW * 0.05 // the car art starts ~5% in from the image's left edge
-        const letterDur = 0.07
+        const letterDur = 0.08
         letters.forEach((el) => {
           const left = el.getBoundingClientRect().left - heroLeft
-          const at = gsap.utils.clamp(0, 1 - letterDur, (left - startX - tailOffset) / travel)
-          tl.fromTo(el, { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: letterDur, ease: 'power2.out' }, at)
+          const at = gsap.utils.clamp(0.04, 1 - letterDur, (left - startX - tailOffset) / travel)
+          tl.fromTo(el, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: letterDur, ease: 'power2.out' }, at)
         })
 
         // Stats: revealed when the car passes the column's centre; numbers count up with scroll.

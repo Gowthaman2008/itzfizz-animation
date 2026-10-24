@@ -5,17 +5,15 @@ export default function Headline() {
   return (
     <h1
       aria-label="Welcome Itzfizz"
-      className="pointer-events-none absolute inset-y-0 z-20 m-0 flex items-center justify-center gap-[0.7em] font-sans font-extrabold uppercase leading-none text-[#04140a]"
-      // Confined to [car start, car's final tail position] so the parked car never covers a letter.
-      // Font size is capped so ~15em of text always fits that stretch.
+      className="pointer-events-none absolute inset-y-0 z-20 m-0 flex items-center justify-center gap-[0.55em] font-sans font-extrabold uppercase leading-none tracking-[0.06em] text-[#04140a] whitespace-nowrap select-none"
       style={{
-        left: '3%',
-        right: 'calc(var(--car-w) + 6%)',
-        fontSize: 'clamp(0.75rem, min(4.2vw, calc((100vw - var(--car-w) - 9vw) / 15)), 3.75rem)',
+        left: 'clamp(1.5rem, 5vw, 4rem)',
+        right: 'calc(var(--car-w) + clamp(1.5rem, 5vw, 4rem))',
+        fontSize: 'clamp(0.85rem, min(3.2vw, calc((100vw - var(--car-w) - 12vw) / 12), calc(var(--road-h) * 0.42)), 2.65rem)',
       }}
     >
       {WORDS.map((word) => (
-        <span key={word} aria-hidden="true" className="flex gap-[0.22em]">
+        <span key={word} aria-hidden="true" className="flex">
           {word.split('').map((char, i) => (
             <span key={i} data-anim="letter" className="inline-block will-change-transform">
               {char}
