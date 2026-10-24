@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Everything in the lane is sized from the car so it scales as one unit. */
+  --car-w: clamp(150px, 26vw, 380px);
+  --car-h: calc(var(--car-w) * 0.4); /* car.svg is 400 x 160 */
+  --road-h: calc(var(--car-w) * 0.5);
+}
+
+html,
+body {
+  margin: 0;
+  background: #f4f4f2;
+  color: #0b0b0b;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.hero {
+  height: 100vh;
+  height: 100svh;
+}
+
+/* Road markings: edge lines + dashed centre line. Painted once, never animated. */
+.road-surface {
+  background: #16181b;
+  box-shadow: inset 0 3px 0 rgba(255, 255, 255, 0.75), inset 0 -3px 0 rgba(255, 255, 255, 0.75);
+}
+.road-dashes {
+  background: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.28) 0 36px, transparent 36px 72px);
+}
+.trail-fill {
+  background: linear-gradient(90deg, #0fb85a 0%, #27e873 100%);
+  will-change: transform;
+}
